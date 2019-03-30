@@ -14,9 +14,6 @@
     "eject": "react-scripts eject",
     "devserver": "live-server --browser=Chrome"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": [
     ">0.2%",
     "not dead",

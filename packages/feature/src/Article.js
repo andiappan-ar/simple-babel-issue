@@ -1,5 +1,3 @@
-import React from 'react';
-
 
 /**
  * A simple Article.
@@ -21,48 +19,11 @@ const Article = (props) => {
                         <h3 class="text-center">
                            
                         </h3>;
-                }
-
-                if (typeof listItem.fields.Heading != 'undefined' && listItem.fields.Heading) {
-
-                    return <div>
-                        <h1 class="text-center">
-                           
-                        </h1>
-                        {subHeading}
-                    </div>;
-                }
+                }             
 
 
                 break;
-            //If its paragraph
-            case 'para':
-                // Image right posion
-                let rightImage = null;
-                if (listItem.fields.ImagePostion.value == "right") {
-                    rightImage = <br/>;
-                }
-
-                // Image left posion
-                let leftImage = null;
-                if (listItem.fields.ImagePostion.value == "left") {
-                    leftImage = <br/>
-                }
-
-                if (typeof listItem.fields.ParagraphText != 'undefined' && listItem.fields.ParagraphText) {
-                    return (
-                        <div class="media">
-                            {rightImage}
-                            <div class="media-body">                                
-                                <p>
-                                <br/>
-                                </p>                               
-                            </div>
-                            {leftImage}
-                        </div>
-                    );
-                }
-                break;
+            
         }
 
     });

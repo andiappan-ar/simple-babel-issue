@@ -1,31 +1,33 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
     main: './src/index.js',
-  },  
-  resolve: {
-    modules: [
-      'node_modules/feature',
-    ],
-    extensions: ['.ts', '.tsx', '.js','.jsx', '.json'],
-    symlinks: true,
   },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[chunkhash].js'
+  },
+  devtool: 'source-map',
+  debug: true,
   module: {
     rules: [
       {
-        test: /\.m?jsx?$/,
-        exclude: {
-          test: /node_modules/,
-          not: [/node_modules\/feature/]
+        test: /\.js$/,
+        loader: 'babel-loader',
+        options: {
+          configFile: resolve('babel.config.js')
         },
-        use: {
-          loader: require.resolve('babel-loader'),
-          options: {
-            rootMode: 'upward',
-          },
-        },
+        exclude: /node_modules\/(?!(feature|ANOTHER-ONE)\/).*/,
+      },
+      // specific library (or could be file) from node_modules, only preset-env, include /node_modules/LIBRARY
+      {
+        test: /\.js$/,
+        include: /node_modules\/feature/,
+        loader: 'babel-loader',
+        options: {
+          presets: ["@babel/preset-env"]
+        }
       },
       {
         test: /\.html$/,

@@ -8,13 +8,8 @@ module.exports = function babelConfig(api) {
             './packages/*',
         ],
         presets: [
-            'babel-preset-es2015',
-            'babel-preset-react'
-        ],
-        plugins: [
-            '@babel/syntax-dynamic-import',
-            '@babel/plugin-proposal-object-rest-spread',
-            '@babel/plugin-transform-arrow-functions',
+            '@babel/preset-env',
+            '@babel/preset-react'
         ],
         env: {
             test: {
@@ -27,8 +22,9 @@ module.exports = function babelConfig(api) {
                                 browsers: ['> 1%'],
                             },
                         },
-                    ],
-                    '@babel/react',
+                        '@babel/preset-env',
+                        '@babel/preset-react'
+                    ]
                 ],
             },
         },
